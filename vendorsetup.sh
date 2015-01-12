@@ -20,5 +20,5 @@
 # In particular, you can add lunch options with the add_lunch_combo
 # function: add_lunch_combo generic-eng
 
+add_lunch_combo full_ouya_1_1-userdebug
 add_lunch_combo aosp_ouya_1_1-userdebug
-add_lunch_combo cm_ouya_1_1-userdebug

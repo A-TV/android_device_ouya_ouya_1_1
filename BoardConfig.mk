@@ -64,8 +64,8 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 TARGET_RECOVERY_FSTAB := device/ouya/ouya_1_1/rootdir/etc/fstab.cardhu
 
 # Releasetools
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/ouya/ouya_1_1/releasetools/ouya_ota_from_target_files
-TARGET_RELEASETOOL_MAKE_RECOVERY_PATCH_SCRIPT := device/ouya/ouya_1_1/releasetools/ouya_make_recovery_patch
+#TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/ouya/ouya_1_1/releasetools/ouya_ota_from_target_files
+#TARGET_RELEASETOOL_MAKE_RECOVERY_PATCH_SCRIPT := device/ouya/ouya_1_1/releasetools/ouya_make_recovery_patch
 
 # Wifi related defines
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211

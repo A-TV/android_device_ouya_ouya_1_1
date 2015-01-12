@@ -12,11 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Inherit from those products. Most specific first.
+# Inherit from ouya device
 $(call inherit-product, device/ouya/ouya_1_1/device.mk)
-# This is where we'd set a backup provider if we had one
-#$(call inherit-product, device/sample/products/backup_overlay.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+$(call inherit-product, device/google/atv/products/atv_base.mk)
 
 # Discard inherited values and use our own instead.
 PRODUCT_NAME := full_ouya_1_1

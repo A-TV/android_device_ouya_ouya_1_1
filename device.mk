@@ -14,16 +14,10 @@
 # limitations under the License.
 #
 
-PRODUCT_AAPT_CONFIG := normal large tvdpi hdpi
-PRODUCT_AAPT_PREF_CONFIG := tvdpi
+PRODUCT_AAPT_CONFIG := normal large xlarge hdpi xhdpi
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
-# Bootanimation
-TARGET_BOOTANIMATION_NAME := 800
-
-PRODUCT_CHARACTERISTICS := tablet,nosdcard
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.carrier=wifi-only
+PRODUCT_CHARACTERISTICS := nosdcard
 
 $(call inherit-product, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk)
 
@@ -32,6 +26,10 @@ $(call inherit-product-if-exists, vendor/ouya/ouya_1_1/ouya_1_1-vendor.mk)
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
     device/ouya/ouya_1_1/overlay
+
+# Boot Animation
+PRODUCT_COPY_FILES += \
+    device/ouya/ouya_1_1/bootanimation.zip:system/media/bootanimation.zip
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -62,20 +60,17 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/media/media_profiles.xml:system/etc/media_profiles.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
-    frameworks/native/data/etc/android.hardware.faketouch.xml:system/etc/permissions/android.hardware.faketouch.xml \
     frameworks/native/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
-    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml
+    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml
 
 # Wifi
 PRODUCT_PACKAGES += \
@@ -114,8 +109,5 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
-
-# we have enough storage space to hold precise GC data
-PRODUCT_TAGS += dalvik.gc.type-precise
 
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
